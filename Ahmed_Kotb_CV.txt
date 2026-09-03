@@ -1,0 +1,212 @@
+AHMED ABDELMONEIM KOTB
+Software Engineering Student | Full Stack Developer | Seeking Internship
+=========================================================================
++20 120 272 2191  |  Alexandria, Egypt
+Email:     akotb4749@gmail.com
+LinkedIn:  https://www.linkedin.com/in/ahmed-kotb-ak349/
+GitHub:    https://github.com/AhmedKotb349
+Portfolio: https://ahmedkotb349.github.io
+Facebook:  www.facebook.com/share/1AjETERK6d/
+
+=========================================================================
+PROFESSIONAL SUMMARY
+=========================================================================
+Computer Science student specializing in Software Engineering at the Arab
+Academy for Science, Technology and Maritime Transport (AASTMT), Alexandria
+(Student ID: 232000349), seeking an internship to apply full-stack
+development, systems programming, and security-testing skills to
+real-world projects.
+
+Full-stack developer across web (React.js, Node.js, PHP), desktop
+(Java/JavaFX), mobile (Kotlin/Android), and systems (C, Assembly) — with
+practical, publicly documented penetration-testing work, an active
+freelance security-assessment and web-build practice, and AWS AI
+Practitioner certification.
+
+=========================================================================
+EDUCATION
+=========================================================================
+Arab Academy for Science, Technology & Maritime Transport (AASTMT)
+B.Sc. Computer Science — Major: Software Engineering
+Alexandria, Egypt | Feb 2024 – Present (Expected 2027) | GPA: 3.85/4.0
+Student ID: 232000349
+
+=========================================================================
+TECHNICAL SKILLS
+=========================================================================
+Languages:    C, Java, JavaScript (ES6+), Python, PHP, Kotlin, SQL,
+              Assembly (MARIE)
+Frontend:     HTML5, CSS3, React.js, JavaFX, FXML, Bootstrap, Responsive
+              Design, Figma
+Backend:      Node.js, Express, PHP, REST APIs, Socket Programming,
+              MongoDB
+Databases:    MySQL, Oracle SQL, Database Design, Normalization, ERD,
+              Virtual Columns
+Mobile:       Android Development (Kotlin), Android Studio
+Security/OS:  Web Application Security Assessment, Linux, Kali Linux,
+              Ubuntu, Wireshark, Vulnerability Reporting
+AI & Cloud:   AI Prompt Engineering, AWS AI Practitioner, AWS PartyRock,
+              Python (NumPy, Pandas, Matplotlib)
+Engineering:  OOP, GoF Design Patterns, SDLC, Agile/Scrum, Software
+              Testing, Project Management (PMBOK), UML, ERD
+Tools:        Git, GitHub, VS Code, IntelliJ IDEA, NetBeans, Android
+              Studio, Cisco Packet Tracer, CircuitVerse, MS Project
+
+=========================================================================
+CERTIFICATIONS & TRAINING
+=========================================================================
+AWS AI Practitioner — Udacity, May 3, 2026
+Verify: https://www.udacity.com/certificate/e/2f9f278a-3b6a-11f1-b7b7-27ea7002c679
+
+AI & Prompt Engineering Scholarship — ICTHub Egypt, May 5, 2026
+
+NTI AI Ambassadors — Completed (certificate pending)
+
+NTI Penetration Testing & Application Security — In progress
+
+ITI Angular — In progress
+
+=========================================================================
+FREELANCE PRACTICE
+=========================================================================
+Offers two freelance services backed by published, verifiable project
+work: Web Application Security Assessments and responsive bilingual
+(EN/AR) landing-page builds.
+
+Kafeel:  https://kafiil.com/service/232389 — Web application security
+         assessment service
+Nafezly: https://nafezly.com/service/86050 — Responsive landing-page
+         build service
+
+=========================================================================
+PROJECTS — SECURITY
+=========================================================================
+
+Horus Byte — Pentest Training Lab
+Technologies: Node.js, Express, MySQL, Docker
+- Intentionally vulnerable app simulating a health-insurance portal
+- Fully remediated build alongside the vulnerable version
+- Formal pentest report, exploitation walkthrough, and slide deck
+GitHub: https://github.com/AhmedKotb349/horus-byte
+
+HTB Cap Write-up — HackTheBox Machine (Rooted)
+Technologies: Linux, Web Enumeration, Privilege Escalation
+- IDOR vulnerability exposed cleartext FTP credentials
+- Password reuse on SSH; root via cap_setuid capability abuse
+- Full formal report plus a scroll-driven interactive HTML walkthrough
+GitHub: https://github.com/AhmedKotb349/htb-cap-writeup
+
+=========================================================================
+PROJECTS — WEB DEVELOPMENT
+=========================================================================
+
+DentalShark — Dental Equipment Marketplace
+Technologies: React.js, HTML/CSS/JS, Kotlin/Android, JavaFX, Node/Express,
+MongoDB, GoF Design Patterns
+- Built 4 ways: React web app, plain HTML/JS site, Android app, JavaFX
+  desktop client — sharing one Node/Express + MongoDB backend on Vercel
+- 10 GoF design patterns implemented as working code (Singleton, Factory
+  Method, Builder, Prototype, Decorator, Bridge, Facade, Command,
+  Strategy, Chain of Responsibility)
+GitHub: https://github.com/AhmedKotb349/DentalShark
+
+DentalShark AI — AI-Powered Marketplace Assistant
+Technologies: AWS PartyRock, Large Language Models
+- AI-powered dental equipment marketplace assistant using LLMs
+Live App: https://partyrock.aws/u/AhmedKotb4749/5BmdZ-j92/DENTAL-SHARK-Equipment-Marketplace-Assistant
+
+DA Motors — Automotive Showroom Website
+Technologies: HTML5, CSS3, JavaScript, Responsive Design
+- Responsive showroom for 8 luxury cars with wishlist system
+GitHub: https://github.com/AhmedKotb349/da-motors
+
+Perk Coffee — Bilingual Coffee Shop Landing Page
+Technologies: HTML5, CSS3, Bootstrap 5, JavaScript
+- Full EN/AR bilingual support with RTL layout toggle
+- Live cart/checkout demo, membership plans, 4 color themes, dark mode
+GitHub: https://github.com/AhmedKotb349/perk-coffee
+
+Diwan — Client-Side Report Editor
+Technologies: HTML5, CSS3, JavaScript
+- Self-hosted, no-backend editor for recurring HTML reports/presentations
+- Import HTML/Excel/PDF, edit via dashboard panel, export
+GitHub: https://github.com/AhmedKotb349/Diwan
+
+Advanced Physics Game — Interactive Learning Platform
+Technologies: HTML5, CSS3, JavaScript, jsPDF
+- Thermodynamics simulator with real-time physics engine and PDF export
+GitHub: https://github.com/AhmedKotb349/physics-game
+
+Orchard Rush — Arcade Game
+Technologies: HTML5, CSS3, JavaScript
+- Bilingual (EN/AR) basket-catching game with mood-reactive backgrounds
+GitHub: https://github.com/AhmedKotb349/orchard-rush
+
+=========================================================================
+PROJECTS — JAVA, OOP & SYSTEMS
+=========================================================================
+
+Kotb Chat — Multithreaded Real-Time Chat Application
+Technologies: Java, JavaFX, Socket Programming, Maven, FXML
+- Multi-client TCP socket server with multithreading
+- JavaFX GUI with dark/light mode, file storage, session management
+GitHub: https://github.com/AhmedKotb349/kotb-chat
+
+DigitalStream Ltd — Audience Segmentation System
+Technologies: Java, Design Patterns (Singleton, Proxy, Observer)
+GitHub: https://github.com/AhmedKotb349/digitalstream-ltd
+
+Library Management System
+Technologies: Java, OOP, Strategy Design Pattern
+GitHub: https://github.com/AhmedKotb349/library-system
+
+UML Portfolio
+Technologies: UML, GoF Design Patterns
+- Use Case, Class, Sequence, Activity, State Chart, and ERD diagrams
+- 10 GoF design-pattern diagrams across 3 systems
+GitHub: https://github.com/AhmedKotb349/uml-portfolio
+
+Systems & Database Portfolio
+Technologies: C, Oracle SQL, Assembly (MARIE), Cisco Packet Tracer
+- C: Multi-branch Sales Analytics (arrays and structs versions)
+- Oracle SQL: E-Commerce Database with full ERD
+- Assembly (MARIE): 4-bit ALU simulation on CircuitVerse, 13 programs
+- Cisco Packet Tracer: Enterprise network topology, routing, subnetting
+GitHub: https://github.com/AhmedKotb349
+
+=========================================================================
+PROJECTS — AI, PYTHON & REQUIREMENTS ENGINEERING
+=========================================================================
+
+4-Queens Problem — Depth First Search (DFS)
+Technologies: Python, NumPy, Pandas, Matplotlib, Jupyter Notebook
+GitHub: https://github.com/AhmedKotb349/4-queens-dfs
+
+K-Means Clustering — Unsupervised Machine Learning
+Technologies: Python, NumPy, Pandas, Matplotlib, Jupyter Notebook
+- Implemented from scratch without ML libraries
+GitHub: https://github.com/AhmedKotb349/kmeans-clustering
+
+ParrotBooks — Sales Order & Ledger System (Case Study)
+Technologies: React, JavaFX, Requirements Engineering
+- Full SRS/requirements-engineering deliverable (Vision & Scope, SRS,
+  UML) plus a working React frontend and JavaFX desktop client
+- Course project, CSE3101, AASTMT
+GitHub: https://github.com/AhmedKotb349/ParrotBooks
+
+Software Testing — AcademyBugs.com Exploratory Testing
+Technologies: Manual Testing, Test Case Design, Bug Reporting
+- 35 structured test cases, 25 detailed bug reports with severity
+GitHub: https://github.com/AhmedKotb349/software-testing
+
+Project Management — Full PMBOK Lifecycle
+Technologies: PMBOK, MS Project, Agile/Scrum, Risk Management, WBS
+GitHub: https://github.com/AhmedKotb349/project-management
+
+=========================================================================
+LANGUAGES & SOFT SKILLS
+=========================================================================
+Languages:   Arabic — Native  |  English — B2 Upper-Intermediate
+Soft Skills: Problem Solving | Client Communication | Teamwork | Time
+             Management | Adaptability | Critical Thinking | Attention
+             to Detail

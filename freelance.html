@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Ahmed Kotb | Freelance Services</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%230a0a12'/><text x='50%25' y='55%25' dominant-baseline='middle' text-anchor='middle' font-family='monospace' font-weight='bold' font-size='18' fill='%234480cf'>AK</text></svg>"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;800&family=Cairo:wght@400;600;700&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --bg:#0a0d10;--bg2:#0f1418;--bg3:#161d22;
+  --c1:#4480cf;--c2:#36b7cc;--c3:#e8a33d;--c4:#7d8fa8;--c5:#ef5b5b;--c6:#e8c93c;
+  --text:#f0f3f0;--muted:#7d8b88;--dim:#38423f;--border:rgba(255,255,255,0.06);
+  --card:rgba(255,255,255,0.025);
+  --grid-line:rgba(68,128,207,.05);
+  --glow1:rgba(68,128,207,.14);--glow2:rgba(54,183,204,.10);--glow3:rgba(125,143,168,.07);
+  --bg-t:rgba(10,13,16,.90);--bg2-t:rgba(15,20,24,.88);
+}
+html[data-theme="light"]{
+  --bg:#f6f9fc;--bg2:#eef3f9;--bg3:#e6ecf5;
+  --c1:#2e6eba;--c2:#21889d;--c3:#b45309;--c4:#5a6b85;--c5:#c8402f;--c6:#8f7008;
+  --text:#111827;--muted:#55606e;--dim:#c3cad6;--border:rgba(17,24,39,0.10);
+  --card:#ffffff;
+  --grid-line:rgba(46,110,186,.055);
+  --glow1:rgba(46,110,186,.10);--glow2:rgba(33,136,157,.08);--glow3:rgba(90,107,133,.05);
+  --bg-t:rgba(246,249,252,.90);--bg2-t:rgba(238,243,249,.88);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:'Syne',sans-serif;overflow-x:hidden;position:relative;}
+nav,main,section,footer{position:relative;z-index:1;}
+a{text-decoration:none;}
+::-webkit-scrollbar{width:3px;}::-webkit-scrollbar-thumb{background:var(--c1);}
+
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  display:flex;justify-content:space-between;align-items:center;
+  padding:.9rem 3rem;
+  background:var(--bg);opacity:.97;backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--border);
+}
+.nav-logo{font-family:'Syne',monospace;font-size:.9rem;color:var(--c1);letter-spacing:3px;}
+.nav-links{display:flex;gap:2rem;align-items:center;}
+.nav-links a{color:var(--muted);font-family:'Syne',monospace;font-size:.7rem;letter-spacing:2px;text-transform:uppercase;transition:color .25s;}
+.nav-links a:hover{color:var(--c1);}
+.nav-back{
+  padding:7px 18px;border-radius:4px;border:1px solid var(--border);color:var(--text)!important;
+  font-family:'Syne',monospace;font-size:.7rem;letter-spacing:1px;transition:border-color .2s,background .2s;
+}
+.nav-back:hover{border-color:var(--c1);background:rgba(68,128,207,.04);}
+.nav-cv{
+  padding:7px 18px;border-radius:4px;
+  background:rgba(68,128,207,.08);border:1px solid rgba(68,128,207,.3);
+  color:var(--c1)!important;font-family:'Syne',monospace;font-size:.7rem;letter-spacing:1px;
+  transition:background .2s,box-shadow .2s;
+}
+.nav-cv:hover{background:rgba(68,128,207,.15);box-shadow:0 0 16px rgba(68,128,207,.2);}
+
+/* CONTROL PANEL */
+.burger-btn{width:36px;height:36px;border-radius:7px;border:1px solid var(--border);background:var(--card);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;cursor:pointer;flex-shrink:0;}
+.burger-btn span{width:15px;height:2px;background:var(--text);border-radius:2px;transition:transform .25s,opacity .25s;}
+.burger-btn.open span:nth-child(1){transform:translateY(6px) rotate(45deg);}
+.burger-btn.open span:nth-child(2){opacity:0;}
+.burger-btn.open span:nth-child(3){transform:translateY(-6px) rotate(-45deg);}
+.cp-overlay{position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:290;opacity:0;pointer-events:none;transition:opacity .3s;}
+.cp-overlay.show{opacity:1;pointer-events:auto;}
+.cp-panel{position:fixed;top:0;left:0;bottom:0;width:320px;max-width:88vw;z-index:300;background:var(--bg2);border-right:1px solid var(--border);transform:translateX(-100%);transition:transform .35s cubic-bezier(.4,0,.2,1);display:flex;flex-direction:column;overflow-y:auto;}
+.cp-panel.show{transform:translateX(0);}
+.cp-header{display:flex;align-items:flex-start;justify-content:space-between;padding:1.3rem 1.3rem 1rem;border-bottom:1px solid var(--border);}
+.cp-header-inner{display:flex;align-items:center;gap:.7rem;}
+.cp-logo-badge{width:36px;height:36px;border-radius:9px;background:var(--c1);color:var(--bg);display:flex;align-items:center;justify-content:center;font-family:'Syne',monospace;font-weight:700;font-size:.78rem;flex-shrink:0;}
+.cp-title{font-family:'Syne',sans-serif;font-weight:700;font-size:.9rem;color:var(--text);}
+.cp-subtitle{font-family:'Syne',monospace;font-size:.56rem;letter-spacing:2px;color:var(--muted);text-transform:uppercase;margin-top:2px;}
+.cp-close{width:28px;height:28px;border-radius:7px;border:1px solid var(--border);background:var(--card);color:var(--muted);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:.85rem;flex-shrink:0;}
+.cp-close:hover{color:var(--text);}
+.cp-body{padding:1.2rem 1.3rem;}
+.cp-section{margin-bottom:1.5rem;}
+.cp-label{font-family:'Syne',monospace;font-size:.6rem;letter-spacing:2px;color:var(--muted);text-transform:uppercase;margin-bottom:.6rem;}
+.cp-pill-row{display:flex;gap:.55rem;}
+.cp-pill{flex:1;padding:.6rem;border-radius:8px;border:1px solid var(--border);background:var(--card);font-family:'Syne',monospace;font-size:.72rem;color:var(--muted);cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;transition:all .2s;}
+.cp-pill.active{border-color:var(--c1);background:rgba(68,128,207,.08);color:var(--c1);}
+.cp-tool-btn{width:100%;text-align:left;padding:.65rem .85rem;border-radius:8px;border:1px solid var(--border);background:var(--card);font-family:'Syne',monospace;font-size:.72rem;color:var(--text);cursor:pointer;margin-bottom:.5rem;display:flex;align-items:center;gap:8px;transition:border-color .2s;text-decoration:none;}
+.cp-tool-btn:hover{border-color:var(--c1);}
+.cp-socials{display:flex;gap:.55rem;}
+.cp-socials a{flex:1;text-align:center;padding:.55rem;border-radius:8px;background:var(--card);border:1px solid var(--border);font-family:'Syne',monospace;font-size:.72rem;color:var(--text);}
+.cp-socials a:hover{border-color:var(--c1);color:var(--c1);}
+
+/* ── HERO ─────────────────────────────────────────── */
+.fhero{padding:8.5rem 3rem 4rem;position:relative;overflow:hidden;}
+/* Page-wide background layer: fixed to viewport so it shows behind every section, not just the hero */
+.grid-bg{position:fixed;inset:0;z-index:0;pointer-events:none;background-image:linear-gradient(rgba(68,128,207,.018) 1px,transparent 1px),linear-gradient(90deg,rgba(68,128,207,.018) 1px,transparent 1px);background-size:52px 52px;}
+.glow{position:fixed;border-radius:50%;pointer-events:none;z-index:0;}
+.g1{top:0;right:6%;width:480px;height:480px;background:radial-gradient(circle,rgba(68,128,207,.08) 0%,transparent 70%);}
+.g2{bottom:-10%;left:0;width:400px;height:400px;background:radial-gradient(circle,rgba(77,166,224,.07) 0%,transparent 70%);}
+.fhero-inner{position:relative;z-index:2;max-width:800px;}
+.avail-badge{
+  display:inline-flex;align-items:center;gap:8px;padding:5px 16px;border-radius:100px;margin-bottom:1.5rem;
+  border:1px solid rgba(236,111,168,.3);background:rgba(236,111,168,.06);
+  font-family:'Syne',monospace;font-size:.65rem;letter-spacing:2px;text-transform:uppercase;color:var(--c4);
+}
+.avail-badge::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--c4);animation:blink 2s infinite;}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.2}}
+.fhero h1{font-size:clamp(2.2rem,5vw,3.4rem);font-weight:800;line-height:1.1;margin-bottom:1rem;}
+.fhero h1 span{color:var(--c1);}
+.fhero p{font-size:1.02rem;color:var(--muted);line-height:1.75;max-width:600px;margin-bottom:1.5rem;}
+.response-line{
+  font-family:'Space Mono',monospace;font-size:.78rem;color:var(--text);
+  display:flex;align-items:center;gap:8px;
+}
+.response-line b{color:var(--c1);}
+
+/* ── SERVICE CARDS ────────────────────────────────── */
+#services{padding:3rem 3rem 5rem;background:var(--bg2-t);}
+.svc-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.75rem;max-width:1200px;}
+.svc-card{
+  background:var(--card);border:1px solid var(--border);border-radius:14px;
+  padding:2rem;position:relative;overflow:hidden;
+}
+.svc-accent{position:absolute;top:0;left:0;right:0;height:3px;}
+.svc-tag{
+  display:inline-block;padding:4px 12px;border-radius:100px;font-family:'Syne',monospace;
+  font-size:.62rem;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:1rem;
+}
+.svc-title{font-size:1.3rem;font-weight:700;margin-bottom:.4rem;}
+.svc-title-ar{font-family:'Cairo',sans-serif;direction:rtl;font-size:.85rem;color:var(--muted);margin-bottom:1rem;}
+.svc-pitch{color:var(--muted);font-size:.88rem;line-height:1.7;margin-bottom:1.5rem;}
+.svc-proof{
+  display:flex;align-items:center;gap:8px;margin-bottom:1.5rem;
+  font-family:'Space Mono',monospace;font-size:.7rem;color:var(--muted);
+}
+.svc-proof a{color:var(--c2);border-bottom:1px dotted rgba(77,166,224,.4);}
+.svc-proof a:hover{color:var(--c1);}
+.svc-includes{list-style:none;margin-bottom:1.5rem;}
+.svc-includes li{
+  display:flex;align-items:flex-start;gap:8px;font-size:.82rem;color:var(--text);
+  padding:.4rem 0;line-height:1.5;
+}
+.svc-includes li::before{content:'✓';flex-shrink:0;font-weight:700;}
+.tier-row{display:flex;gap:.6rem;margin-bottom:1.5rem;}
+.tier{
+  flex:1;text-align:center;padding:.85rem .5rem;border-radius:8px;
+  background:rgba(255,255,255,.02);border:1px solid var(--border);
+}
+.tier-label{font-family:'Syne',monospace;font-size:.6rem;letter-spacing:1px;text-transform:uppercase;color:var(--muted);margin-bottom:.35rem;}
+.tier-price{font-family:'Space Mono',monospace;font-weight:700;font-size:.85rem;}
+.svc-note{
+  font-size:.74rem;color:var(--muted);line-height:1.6;padding:.85rem 1rem;
+  background:rgba(255,255,255,.02);border-left:2px solid;border-radius:0 6px 6px 0;
+}
+.svc1 .svc-accent{background:linear-gradient(90deg,var(--c1),var(--c2));}
+.svc1 .svc-tag{background:rgba(68,128,207,.08);border:1px solid rgba(68,128,207,.25);color:var(--c1);}
+.svc1 .pkg-price{color:var(--c1);}
+.svc1 .svc-note{border-color:var(--c1);}
+.svc2 .svc-accent{background:linear-gradient(90deg,var(--c3),var(--c6));}
+.svc2 .svc-tag{background:rgba(251,146,60,.08);border:1px solid rgba(251,146,60,.25);color:var(--c3);}
+.svc2 .pkg-price{color:var(--c3);}
+.svc2 .svc-note{border-color:var(--c3);}
+.svc-cta{
+  display:inline-flex;align-items:center;gap:6px;margin-top:1.2rem;
+  padding:9px 20px;border-radius:5px;font-family:'Syne',monospace;font-size:.72rem;
+  letter-spacing:1px;font-weight:700;transition:transform .2s;
+}
+.svc-cta:hover{transform:translateY(-2px);}
+.svc1 .svc-cta{background:var(--c1);color:#07070f;}
+.svc2 .svc-cta{background:var(--c3);color:#07070f;}
+
+/* ── HOW I WORK ───────────────────────────────────── */
+#how{padding:5rem 3rem;background:var(--bg-t);}
+.sec-label{font-family:'Syne',monospace;font-size:.6rem;letter-spacing:4px;text-transform:uppercase;margin-bottom:.5rem;color:var(--c5);}
+.sec-title{font-size:clamp(1.6rem,3vw,2.1rem);font-weight:700;margin-bottom:2.5rem;}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:1.25rem;max-width:1200px;}
+.step{
+  background:var(--card);border:1px solid var(--border);border-radius:12px;
+  padding:1.5rem 1.25rem;position:relative;
+}
+.step-n{
+  font-family:'Space Mono',monospace;font-size:.7rem;color:var(--dim);
+  border:1px solid var(--dim);border-radius:50%;width:26px;height:26px;
+  display:flex;align-items:center;justify-content:center;margin-bottom:1rem;
+}
+.step-t{font-size:.92rem;font-weight:700;margin-bottom:.5rem;}
+.step-d{font-size:.78rem;color:var(--muted);line-height:1.6;}
+.step-arrow{position:absolute;top:1.9rem;right:-1.15rem;color:var(--dim);font-size:1.1rem;z-index:2;}
+
+/* ── CERTS STRIP ──────────────────────────────────── */
+#fcerts{padding:3.5rem 3rem;background:var(--bg2-t);border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
+.fcerts-row{display:flex;flex-wrap:wrap;gap:.85rem;align-items:center;max-width:1200px;}
+.fcerts-label{font-family:'Syne',monospace;font-size:.62rem;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-right:1rem;}
+.fcert-chip{
+  display:flex;align-items:center;gap:7px;padding:7px 15px;border-radius:100px;
+  background:var(--card);border:1px solid var(--border);font-size:.76rem;
+}
+.fcert-chip.pending{opacity:.55;border-style:dashed;}
+.fcert-chip small{font-family:'Space Mono',monospace;font-size:.6rem;color:var(--muted);margin-left:4px;}
+
+/* ── TESTIMONIALS ─────────────────────────────────── */
+#reviews{padding:5rem 3rem;background:var(--bg-t);}
+.reviews-empty{
+  max-width:560px;border:1px dashed var(--border);border-radius:14px;
+  padding:2.5rem 2rem;text-align:center;
+}
+.reviews-empty-icon{font-size:1.8rem;margin-bottom:.75rem;opacity:.6;}
+.reviews-empty h3{font-size:1rem;margin-bottom:.5rem;}
+.reviews-empty p{font-size:.82rem;color:var(--muted);line-height:1.7;}
+
+footer{
+  border-top:1px solid var(--border);padding:1.75rem 3rem;
+  display:flex;justify-content:space-between;align-items:center;
+  font-family:'Syne',monospace;font-size:.68rem;color:var(--muted);background:var(--bg);
+}
+
+@media(max-width:900px){
+  .svc-grid{grid-template-columns:1fr;}
+  .steps{grid-template-columns:1fr 1fr;}
+  .step-arrow{display:none;}
+}
+@media(max-width:768px){
+  nav{padding:.9rem 1.5rem;}
+  .nav-links a:not(.nav-cv):not(.nav-back){display:none;}
+  .fhero,#services,#how,#fcerts,#reviews{padding-left:1.5rem;padding-right:1.5rem;}
+  .steps{grid-template-columns:1fr;}
+  footer{flex-direction:column;gap:.75rem;text-align:center;padding:1.5rem;}
+}
+@media print{
+  nav,.burger-btn,.cp-overlay,.cp-panel,.grid-bg,.glow{display:none!important;}
+  *{
+    animation:none!important;transition:none!important;
+    backdrop-filter:none!important;-webkit-backdrop-filter:none!important;
+    box-shadow:none!important;text-shadow:none!important;
+    -webkit-print-color-adjust:exact!important;print-color-adjust:exact!important;color-adjust:exact!important;
+  }
+  html,body{background:var(--bg)!important;color:var(--text)!important;overflow:visible!important;height:auto!important;}
+  #services,#fcerts{background:var(--bg2)!important;}
+  #how,#reviews{background:var(--bg)!important;}
+}
+</style>
+</head>
+<body>
+<div class="grid-bg"></div>
+<div class="glow g1"></div><div class="glow g2"></div>
+
+<nav>
+  <div style="display:flex;align-items:center;gap:.9rem;">
+    <button class="burger-btn" id="cpBtn" aria-label="Open control panel"><span></span><span></span><span></span></button>
+    <div class="nav-logo">AK // SE</div>
+  </div>
+  <div class="nav-links">
+    <a href="index.html" class="nav-back">← Full Portfolio</a>
+    <a href="Ahmed_Kotb_CV_Print.pdf" download="Ahmed_Kotb_CV.pdf" onclick="return downloadCV(event)" class="nav-cv">↓ CV</a>
+  </div>
+</nav>
+
+<div class="cp-overlay" id="cpOverlay"></div>
+<aside class="cp-panel" id="cpPanel">
+  <div class="cp-header">
+    <div class="cp-header-inner">
+      <div class="cp-logo-badge">AK</div>
+      <div>
+        <div class="cp-title">Control Panel</div>
+        <div class="cp-subtitle">Ahmed Kotb · Freelance</div>
+      </div>
+    </div>
+    <button class="cp-close" id="cpClose">✕</button>
+  </div>
+  <div class="cp-body">
+    <div class="cp-section">
+      <div class="cp-label">Appearance</div>
+      <div class="cp-pill-row">
+        <button class="cp-pill" id="cpDark">🌙 Dark</button>
+        <button class="cp-pill" id="cpLight">☀️ Light</button>
+      </div>
+    </div>
+    <div class="cp-section">
+      <div class="cp-label">Navigate</div>
+      <a href="index.html" class="cp-tool-btn">Full Portfolio</a>
+      <a href="cv.html" class="cp-tool-btn">CV Page</a>
+      <a href="brief.html" class="cp-tool-btn">Brief Version</a>
+    </div>
+    <div class="cp-section">
+      <div class="cp-label">Resume</div>
+      <a href="Ahmed_Kotb_CV.pdf" target="_blank" class="cp-tool-btn">👁 View CV (with links)</a>
+      <a href="Ahmed_Kotb_CV_Print.pdf" download="Ahmed_Kotb_CV.pdf" onclick="return downloadCV(event)" class="cp-tool-btn">⬇ Download CV (print copy)</a>
+    </div>
+    <div class="cp-section">
+      <div class="cp-label">Elsewhere</div>
+      <div class="cp-socials">
+        <a href="https://github.com/AhmedKotb349" target="_blank">GitHub</a>
+        <a href="https://www.linkedin.com/in/ahmed-kotb-ak349/" target="_blank">LinkedIn</a>
+      </div>
+    </div>
+  </div>
+</aside>
+
+<!-- ── HERO ──────────────────────────────────────────────── -->
+<section class="fhero">
+  <div class="fhero-inner">
+    <div class="avail-badge">Open For Freelance Work</div>
+    <h1>Two things I build well —<br/><span>security assessments</span> and <span>web pages</span> that ship.</h1>
+    <p>
+      I take on a small number of freelance projects alongside my studies at AASTMT.
+      Every service below is backed by finished, public work you can review before you hire —
+      no portfolio filler, no stock screenshots.
+    </p>
+    <div class="response-line">💬 <b>Usually responds within 24 hours</b> · Currently accepting new projects</div>
+  </div>
+</section>
+
+<!-- ── SERVICES ──────────────────────────────────────────── -->
+<section id="services">
+  <div class="sec-label">// Services</div>
+  <h2 class="sec-title">What I offer</h2>
+  <div class="svc-grid">
+
+    <!-- SERVICE 1 — SECURITY -->
+    <div class="svc-card svc1">
+      <div class="svc-accent"></div>
+      <span class="svc-tag">🔐 Security</span>
+      <div class="svc-title">Website Security Check</div>
+      <div class="svc-title-ar">فحص أمني لموقعك أو تطبيقك</div>
+      <p class="svc-pitch">
+        I check your website or app for the most common ways it could get hacked,
+        then hand you a plain-language report of what I found and how to fix it.
+      </p>
+      <div class="svc-proof">
+        📎 Proof of work:
+        <a href="https://github.com/AhmedKotb349/htb-cap-writeup" target="_blank">HTB Cap write-up</a> ·
+        <a href="https://github.com/AhmedKotb349/horus-byte" target="_blank">Horus Byte lab</a>
+      </div>
+      <ul class="svc-includes">
+        <li>A written report of every issue found, ranked by how serious it is</li>
+        <li>Step-by-step fixes for each one — no jargon, just what to do</li>
+        <li>A short call to walk through the results together</li>
+      </ul>
+      <div class="tier-row">
+        <div class="tier"><div class="tier-label">Basic</div><div class="tier-price">800 EGP</div></div>
+        <div class="tier"><div class="tier-label">Standard</div><div class="tier-price">2,000 EGP</div></div>
+        <div class="tier"><div class="tier-label">Full Check</div><div class="tier-price">4,000 EGP</div></div>
+      </div>
+      <div class="svc-note">You'll need to confirm in writing that it's your site (or you have permission to test it) before I start — this protects us both.</div>
+      <a href="mailto:akotb4749@gmail.com?subject=Security%20Assessment%20Inquiry" class="svc-cta">Get a quote →</a>
+      <a href="https://kafiil.com/service/232389" target="_blank" class="svc-cta" style="background:transparent;border:1px solid var(--c1);color:var(--c1);margin-left:.5rem;">Order on Kafiil ↗</a>
+    </div>
+
+    <!-- SERVICE 2 — WEB -->
+    <div class="svc-card svc2">
+      <div class="svc-accent"></div>
+      <span class="svc-tag">🌐 Web Build</span>
+      <div class="svc-title">Landing Page for Your Business</div>
+      <div class="svc-title-ar">صفحة هبوط احترافية لمشروعك</div>
+      <p class="svc-pitch">
+        A clean, mobile-friendly page for your business or product — built by hand,
+        not from a template. Works in Arabic and English if you need it to.
+      </p>
+      <div class="svc-proof">
+        📎 Proof of work:
+        <a href="https://perk-coffee.vercel.app/" target="_blank">Perk Coffee</a> ·
+        <a href="https://ahmedkotb349.github.io/da-motors" target="_blank">DA Motors</a>
+      </div>
+      <ul class="svc-includes">
+        <li>Looks good on phone, tablet, and desktop</li>
+        <li>Arabic + English with a light/dark mode switch, if you want it</li>
+        <li>All source files handed over — it's yours to keep</li>
+      </ul>
+      <div class="tier-row">
+        <div class="tier"><div class="tier-label">Basic</div><div class="tier-price">600 EGP</div></div>
+        <div class="tier"><div class="tier-label">Standard</div><div class="tier-price">1,200 EGP</div></div>
+        <div class="tier"><div class="tier-label">Full Build</div><div class="tier-price">2,500 EGP</div></div>
+      </div>
+      <div class="svc-note">Send your logo, text, and a couple of sites you like the look of — that's all I need to get started.</div>
+      <a href="mailto:akotb4749@gmail.com?subject=Landing%20Page%20Inquiry" class="svc-cta">Get a quote →</a>
+      <a href="https://nafezly.com/service/86050" target="_blank" class="svc-cta" style="background:transparent;border:1px solid var(--c3);color:var(--c3);margin-left:.5rem;">Order on Nafezly ↗</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── HOW I WORK ────────────────────────────────────────── -->
+<section id="how">
+  <div class="sec-label">// Process</div>
+  <h2 class="sec-title">How I work with clients</h2>
+  <div class="steps">
+    <div class="step">
+      <div class="step-n">1</div>
+      <div class="step-t">Brief &amp; scope</div>
+      <div class="step-d">A short intake exchange to lock down what's included, what isn't, and the timeline — before any work starts.</div>
+      <div class="step-arrow">→</div>
+    </div>
+    <div class="step">
+      <div class="step-n">2</div>
+      <div class="step-t">Midpoint update</div>
+      <div class="step-d">A progress check-in partway through, not silence until delivery day.</div>
+      <div class="step-arrow">→</div>
+    </div>
+    <div class="step">
+      <div class="step-n">3</div>
+      <div class="step-t">Structured delivery</div>
+      <div class="step-d">Files or report handed over with a short walkthrough of what you're getting and how to use it.</div>
+      <div class="step-arrow">→</div>
+    </div>
+    <div class="step">
+      <div class="step-n">4</div>
+      <div class="step-t">Revision window</div>
+      <div class="step-d">A defined number of revision rounds agreed upfront — no ambiguity about what's included.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CERTS STRIP ───────────────────────────────────────── -->
+<section id="fcerts">
+  <div class="fcerts-row">
+    <span class="fcerts-label">Backed by</span>
+    <span class="fcert-chip">🏅 AWS AI Practitioner — Udacity</span>
+    <span class="fcert-chip">🎓 AI &amp; Prompt Engineering Scholarship — ICTHub Egypt</span>
+    <span class="fcert-chip pending">🛡️ NTI Penetration Testing &amp; App Security <small>in progress</small></span>
+    <span class="fcert-chip pending">🤝 NTI AI Ambassadors <small>in progress</small></span>
+    <span class="fcert-chip pending">🅰️ ITI Angular <small>in progress</small></span>
+  </div>
+</section>
+
+<!-- ── REVIEWS (EMPTY STATE) ─────────────────────────────── -->
+<section id="reviews">
+  <div class="sec-label">// Client Feedback</div>
+  <h2 class="sec-title">Reviews</h2>
+  <div class="reviews-empty">
+    <div class="reviews-empty-icon">💬</div>
+    <h3>No reviews yet</h3>
+    <p>This space fills in after the first few freelance projects. If you work with me, I'll ask you to leave one here.</p>
+  </div>
+</section>
+
+<footer>
+  <span>Ahmed Abdelmoneim Kotb · أحمد عبدالمنعم قطب</span>
+  <span><a href="mailto:akotb4749@gmail.com" style="color:var(--muted)">akotb4749@gmail.com</a> · +20 120 272 2191</span>
+</footer>
+
+<script>
+const cpBtn = document.getElementById('cpBtn');
+const cpPanel = document.getElementById('cpPanel');
+const cpOverlay = document.getElementById('cpOverlay');
+const cpClose = document.getElementById('cpClose');
+function openCP(){cpBtn.classList.add('open');cpPanel.classList.add('show');cpOverlay.classList.add('show');}
+function closeCP(){cpBtn.classList.remove('open');cpPanel.classList.remove('show');cpOverlay.classList.remove('show');}
+cpBtn.addEventListener('click',()=>cpPanel.classList.contains('show')?closeCP():openCP());
+cpOverlay.addEventListener('click',closeCP);
+cpClose.addEventListener('click',closeCP);
+
+const cpDark = document.getElementById('cpDark');
+const cpLight = document.getElementById('cpLight');
+function applyTheme(t){
+  document.documentElement.setAttribute('data-theme',t);
+  localStorage.setItem('ak-theme',t);
+  cpDark.classList.toggle('active',t==='dark');
+  cpLight.classList.toggle('active',t==='light');
+}
+applyTheme(localStorage.getItem('ak-theme') || 'dark');
+cpDark.addEventListener('click',()=>applyTheme('dark'));
+cpLight.addEventListener('click',()=>applyTheme('light'));
+
+async function downloadCV(e){
+  e.preventDefault();
+  const el = e.currentTarget;
+  const url = el.getAttribute('href');
+  const filename = el.getAttribute('download') || 'Ahmed_Kotb_CV.pdf';
+  try{
+    const res = await fetch(url);
+    if(!res.ok) throw new Error('fetch failed');
+    const blob = await res.blob();
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = filename;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+  }catch(err){
+    window.open(url,'_blank');
+  }
+  return false;
+}
+</script>
+</body>
+</html>

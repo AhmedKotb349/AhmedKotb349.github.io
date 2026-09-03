@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Ahmed Kotb — CV</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%230a0a12'/><text x='50%25' y='55%25' dominant-baseline='middle' text-anchor='middle' font-family='monospace' font-weight='bold' font-size='18' fill='%234480cf'>AK</text></svg>"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --bg:#0a0d10;--bg2:#0f1418;--bg3:#161d22;
+  --c1:#4480cf;--c2:#36b7cc;--c3:#e8a33d;--c4:#7d8fa8;--c5:#ef5b5b;--c6:#e8c93c;
+  --text:#f0f3f0;--muted:#7d8b88;--border:rgba(255,255,255,0.07);--card:rgba(255,255,255,0.03);
+  --grid-line:rgba(68,128,207,.05);
+  --glow1:rgba(68,128,207,.14);--glow2:rgba(54,183,204,.10);--glow3:rgba(125,143,168,.07);
+}
+html[data-theme="light"]{
+  --bg:#f6f9fc;--bg2:#eef3f9;--bg3:#e6ecf5;
+  --c1:#2e6eba;--c2:#21889d;--c3:#b45309;--c4:#5a6b85;--c5:#c8402f;--c6:#8f7008;
+  --text:#111827;--muted:#55606e;--border:rgba(17,24,39,0.10);--card:#ffffff;
+  --grid-line:rgba(46,110,186,.055);
+  --glow1:rgba(46,110,186,.10);--glow2:rgba(33,136,157,.08);--glow3:rgba(90,107,133,.05);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:'Syne',sans-serif;overflow-x:hidden;position:relative;}
+.topbar,main,.cv-page{position:relative;z-index:1;}
+/* Page-wide background layer: grid pattern + glow orbs, fixed to viewport so it shows behind the whole page, matching the rest of the site */
+.grid-bg{
+  position:fixed;inset:0;z-index:0;pointer-events:none;
+  background-image:linear-gradient(var(--grid-line) 1px,transparent 1px),
+                   linear-gradient(90deg,var(--grid-line) 1px,transparent 1px);
+  background-size:52px 52px;
+}
+.glow{position:fixed;border-radius:50%;pointer-events:none;z-index:0;}
+.g1{top:8%;right:4%;width:480px;height:480px;background:radial-gradient(circle,var(--glow1) 0%,transparent 70%);}
+.g2{bottom:8%;left:2%;width:400px;height:400px;background:radial-gradient(circle,var(--glow2) 0%,transparent 70%);}
+.g3{top:45%;left:40%;width:300px;height:300px;background:radial-gradient(circle,var(--glow3) 0%,transparent 70%);}
+a{text-decoration:none;}
+::-webkit-scrollbar{width:3px;}::-webkit-scrollbar-thumb{background:var(--c1);}
+
+/* TOP BAR */
+.topbar{
+  position:sticky;top:0;z-index:50;display:flex;justify-content:space-between;align-items:center;
+  padding:.75rem 2rem;background:var(--bg);opacity:.97;backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--border);
+}
+.topbar-left{display:flex;align-items:center;gap:.8rem;}
+.topbar-logo{font-family:'Space Mono',monospace;font-size:.8rem;color:var(--c1);letter-spacing:3px;}
+.topbar-links{display:flex;gap:.6rem;align-items:center;}
+.tb-btn{padding:6px 14px;border-radius:4px;font-family:'Space Mono',monospace;font-size:.65rem;letter-spacing:1px;transition:background .2s,transform .15s,border-color .2s;}
+.tb-btn:hover{transform:translateY(-1px);}
+.tb-back{border:1px solid var(--border);color:var(--muted);}
+.tb-back:hover{border-color:var(--c1);color:var(--c1);}
+.tb-dl{border:1px solid rgba(68,128,207,.35);color:var(--c1);background:rgba(68,128,207,.06);}
+.tb-dl:hover{background:rgba(68,128,207,.14);}
+
+/* CONTROL PANEL */
+.burger-btn{width:34px;height:34px;border-radius:7px;border:1px solid var(--border);background:var(--card);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;cursor:pointer;flex-shrink:0;}
+.burger-btn span{width:14px;height:2px;background:var(--text);border-radius:2px;transition:transform .25s,opacity .25s;}
+.burger-btn.open span:nth-child(1){transform:translateY(6px) rotate(45deg);}
+.burger-btn.open span:nth-child(2){opacity:0;}
+.burger-btn.open span:nth-child(3){transform:translateY(-6px) rotate(-45deg);}
+.cp-overlay{position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:290;opacity:0;pointer-events:none;transition:opacity .3s;}
+.cp-overlay.show{opacity:1;pointer-events:auto;}
+.cp-panel{position:fixed;top:0;left:0;bottom:0;width:320px;max-width:88vw;z-index:300;background:var(--bg2);border-right:1px solid var(--border);transform:translateX(-100%);transition:transform .35s cubic-bezier(.4,0,.2,1);display:flex;flex-direction:column;overflow-y:auto;}
+.cp-panel.show{transform:translateX(0);}
+.cp-header{display:flex;align-items:flex-start;justify-content:space-between;padding:1.3rem 1.3rem 1rem;border-bottom:1px solid var(--border);}
+.cp-header-inner{display:flex;align-items:center;gap:.7rem;}
+.cp-logo-badge{width:36px;height:36px;border-radius:9px;background:var(--c1);color:var(--bg);display:flex;align-items:center;justify-content:center;font-family:'Space Mono',monospace;font-weight:700;font-size:.78rem;flex-shrink:0;}
+.cp-title{font-family:'Space Mono',sans-serif;font-weight:700;font-size:.9rem;color:var(--text);}
+.cp-subtitle{font-family:'Space Mono',monospace;font-size:.56rem;letter-spacing:2px;color:var(--muted);text-transform:uppercase;margin-top:2px;}
+.cp-close{width:28px;height:28px;border-radius:7px;border:1px solid var(--border);background:var(--card);color:var(--muted);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:.85rem;flex-shrink:0;}
+.cp-close:hover{color:var(--text);}
+.cp-body{padding:1.2rem 1.3rem;}
+.cp-section{margin-bottom:1.5rem;}
+.cp-label{font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:2px;color:var(--muted);text-transform:uppercase;margin-bottom:.6rem;}
+.cp-pill-row{display:flex;gap:.55rem;}
+.cp-pill{flex:1;padding:.6rem;border-radius:8px;border:1px solid var(--border);background:var(--card);font-family:'Space Mono',monospace;font-size:.72rem;color:var(--muted);cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;transition:all .2s;}
+.cp-pill.active{border-color:var(--c1);background:rgba(68,128,207,.08);color:var(--c1);}
+.cp-tool-btn{width:100%;text-align:left;padding:.65rem .85rem;border-radius:8px;border:1px solid var(--border);background:var(--card);font-family:'Space Mono',monospace;font-size:.72rem;color:var(--text);cursor:pointer;margin-bottom:.5rem;display:flex;align-items:center;gap:8px;transition:border-color .2s;}
+.cp-tool-btn:hover{border-color:var(--c1);}
+.cp-sec-link{display:flex;align-items:center;gap:.6rem;padding:.55rem .5rem;border-radius:6px;border-left:2px solid transparent;color:var(--muted);font-family:'Space Mono',monospace;font-size:.76rem;transition:all .2s;}
+.cp-sec-link .num{font-family:'Space Mono',monospace;font-size:.62rem;color:var(--border);}
+.cp-sec-link:hover{color:var(--text);}
+.cp-sec-link.active{border-left-color:var(--c1);background:rgba(68,128,207,.06);color:var(--c1);}
+.cp-socials{display:flex;gap:.55rem;}
+.cp-socials a{flex:1;text-align:center;padding:.55rem;border-radius:8px;background:var(--card);border:1px solid var(--border);font-family:'Space Mono',monospace;font-size:.72rem;color:var(--text);}
+.cp-socials a:hover{border-color:var(--c1);color:var(--c1);}
+@media print{
+  /* Hide UI chrome and every decorative/animated layer — these are what stall printing and can leave faint text unreadable */
+  .topbar,.burger-btn,.cp-overlay,.cp-panel,.grid-bg,.glow{display:none!important;}
+  *{
+    animation:none!important;transition:none!important;
+    backdrop-filter:none!important;-webkit-backdrop-filter:none!important;
+    box-shadow:none!important;text-shadow:none!important;
+    -webkit-print-color-adjust:exact!important;print-color-adjust:exact!important;color-adjust:exact!important;
+  }
+  /* Keep whichever theme (dark or light) is currently active — just make the fill solid/opaque so it reliably prints instead of relying on gradients/canvas */
+  html,body{background:var(--bg)!important;color:var(--text)!important;overflow:visible!important;height:auto!important;}
+  .cv-page{max-width:100%!important;overflow:visible!important;}
+}
+
+/* PAGE */
+.cv-page{max-width:860px;margin:0 auto;padding:2.5rem 2rem 4rem;}
+
+/* HEADER */
+.cv-hdr{
+  display:grid;grid-template-columns:1fr auto;gap:2rem;align-items:start;
+  padding-bottom:2rem;margin-bottom:2rem;border-bottom:1px solid var(--border);position:relative;
+}
+.cv-hdr::after{content:'';position:absolute;bottom:-1px;left:0;width:60px;height:2px;background:linear-gradient(90deg,var(--c1),var(--c2));}
+.cv-name{font-size:2.6rem;font-weight:800;line-height:1;letter-spacing:-1px;}
+.cv-name-ar{font-size:.85rem;color:var(--muted);direction:rtl;margin-top:.35rem;letter-spacing:3px;font-weight:400;}
+.cv-role-badge{
+  display:inline-flex;align-items:center;gap:7px;margin-top:.75rem;
+  padding:5px 14px;border-radius:55px;background:rgba(68,128,207,.06);border:1px solid rgba(68,128,207,.22);
+  font-family:'Space Mono',monospace;font-size:.55rem;letter-spacing:2px;text-transform:uppercase;color:var(--c1);
+}
+.cv-role-badge::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--c1);animation:blink 2s infinite;}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.2}}
+.cv-contacts{display:flex;flex-direction:column;gap:.4rem;text-align:right;}
+.cv-contact-line{font-family:'Space Mono',monospace;font-size:.7rem;color:var(--muted);}
+.cv-links-row{display:flex;flex-wrap:wrap;gap:.4rem;justify-content:flex-end;margin-top:.3rem;}
+.cv-link-btn{
+  padding:4px 11px;border-radius:4px;font-family:'Space Mono',monospace;font-size:.63rem;
+  letter-spacing:1px;border:1px solid;transition:background .2s,transform .15s;
+}
+.cv-link-btn:hover{transform:translateY(-2px);}
+.lbtn-email{border-color:rgba(251,146,60,.35);color:var(--c3);background:rgba(251,146,60,.06);}
+.lbtn-email:hover{background:rgba(251,146,60,.13);}
+.lbtn-fb{border-color:rgba(77,166,224,.35);color:var(--c2);background:rgba(77,166,224,.06);}
+.lbtn-fb:hover{background:rgba(77,166,224,.13);}
+.lbtn-li{border-color:rgba(68,128,207,.35);color:var(--c1);background:rgba(68,128,207,.06);}
+.lbtn-li:hover{background:rgba(68,128,207,.13);}
+.lbtn-gh{border-color:rgba(244,114,182,.35);color:var(--c5);background:rgba(244,114,182,.06);}
+.lbtn-gh:hover{background:rgba(244,114,182,.13);}
+.lbtn-pt{border-color:rgba(236,111,168,.35);color:var(--c4);background:rgba(236,111,168,.06);}
+.lbtn-pt:hover{background:rgba(236,111,168,.13);}
+
+/* SECTIONS */
+.cv-section{margin-bottom:2.25rem;}
+.cv-sec-title{
+  display:flex;align-items:center;gap:10px;font-family:'Space Mono',monospace;
+  font-size:.63rem;letter-spacing:4px;text-transform:uppercase;
+  margin-bottom:1.1rem;padding-bottom:.55rem;border-bottom:1px solid var(--border);
+}
+.sec-icon{font-size:.9rem;}
+.sec-label{color:var(--c1);}
+
+/* SUMMARY */
+.cv-summary{
+  color:var(--muted);line-height:1.85;font-size:.88rem;
+  background:var(--card);border:1px solid var(--border);border-radius:8px;
+  padding:1rem 1.25rem;border-left:3px solid var(--c1);
+}
+
+/* EDUCATION */
+.edu-card{
+  background:var(--card);border:1px solid var(--border);border-radius:8px;
+  padding:1rem 1.25rem;display:flex;justify-content:space-between;align-items:start;
+  border-left:3px solid var(--c2);
+}
+.edu-school{font-size:.97rem;font-weight:700;}
+.edu-deg{color:var(--muted);font-size:.82rem;margin-top:4px;}
+.edu-gpa{color:var(--c4);font-family:'Space Mono',monospace;font-size:.7rem;margin-top:4px;}
+.edu-year{font-family:'Space Mono',monospace;font-size:.7rem;background:rgba(77,166,224,.08);border:1px solid rgba(77,166,224,.2);padding:3px 10px;border-radius:4px;color:var(--c2);white-space:nowrap;}
+
+/* CERT */
+.cert-card{
+  display:flex;align-items:center;gap:1rem;
+  background:rgba(251,146,60,.04);border:1px solid rgba(251,146,60,.2);border-radius:8px;padding:.9rem 1.1rem;
+}
+.cert-icon{font-size:1.4rem;}
+.cert-name{font-size:.92rem;font-weight:700;margin-bottom:3px;}
+.cert-meta{font-family:'Space Mono',monospace;font-size:.65rem;color:var(--muted);}
+.cert-verify{
+  display:inline-flex;align-items:center;gap:4px;margin-top:.4rem;
+  font-family:'Space Mono',monospace;font-size:.65rem;color:var(--c3);
+  border:1px solid rgba(251,146,60,.3);background:rgba(251,146,60,.06);padding:3px 10px;border-radius:3px;transition:background .2s;
+}
+.cert-verify:hover{background:rgba(251,146,60,.14);}
+
+/* SKILLS */
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:.85rem;}
+.skill-group{
+  background:var(--card);border:1px solid var(--border);border-radius:8px;
+  padding:.85rem 1rem;transition:border-color .25s,transform .2s;
+}
+.skill-group:hover{transform:translateX(3px);}
+.skill-group-name{font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:3px;text-transform:uppercase;margin-bottom:.65rem;font-weight:700;}
+.stags{display:flex;flex-wrap:wrap;gap:5px;}
+.stag{padding:3px 9px;border-radius:3px;font-family:'Space Mono',monospace;font-size:.68rem;background:rgba(255,255,255,.05);border:1px solid var(--border);color:var(--text);transition:background .15s;cursor:default;}
+.stag:hover{background:rgba(255,255,255,.09);}
+.sg-c1{border-left:2px solid var(--c1);}.sg-c1 .skill-group-name{color:var(--c1);}
+.sg-c2{border-left:2px solid var(--c2);}.sg-c2 .skill-group-name{color:var(--c2);}
+.sg-c3{border-left:2px solid var(--c3);}.sg-c3 .skill-group-name{color:var(--c3);}
+.sg-c4{border-left:2px solid var(--c4);}.sg-c4 .skill-group-name{color:var(--c4);}
+.sg-c5{border-left:2px solid var(--c5);}.sg-c5 .skill-group-name{color:var(--c5);}
+.sg-c6{border-left:2px solid var(--c6);}.sg-c6 .skill-group-name{color:var(--c6);}
+
+/* PROJECTS */
+.proj-cat{display:flex;align-items:center;gap:10px;margin:1.5rem 0 .75rem;}
+.proj-cat-name{font-size:.85rem;font-weight:700;letter-spacing:.5px;}
+.proj-cat-line{flex:1;height:1px;background:linear-gradient(to right,var(--border),transparent);}
+.proj-card{
+  background:var(--card);border:1px solid var(--border);border-radius:8px;
+  padding:.9rem 1.1rem;margin-bottom:.65rem;
+  transition:border-color .25s,transform .2s;position:relative;overflow:hidden;
+}
+.proj-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;}
+.proj-card:hover{transform:translateX(4px);}
+.pc-web::before{background:var(--c1);}
+.pc-ai::before{background:var(--c3);}
+.pc-java::before{background:var(--c2);}
+.pc-swe::before{background:var(--c5);}
+.pc-sys::before{background:var(--c6);}
+.proj-top{display:flex;justify-content:space-between;align-items:start;margin-bottom:.4rem;}
+.proj-name{font-size:.9rem;font-weight:700;}
+.proj-badge{font-family:'Space Mono',monospace;font-size:.58rem;letter-spacing:1px;padding:2px 7px;border-radius:3px;white-space:nowrap;}
+.proj-desc{color:var(--muted);font-size:.8rem;line-height:1.6;margin-bottom:.6rem;}
+.proj-tech-row{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:.6rem;}
+.tech-pill{padding:2px 8px;border-radius:3px;font-family:'Space Mono',monospace;font-size:.63rem;background:rgba(255,255,255,.04);border:1px solid var(--border);color:var(--muted);}
+.proj-links-row{display:flex;flex-wrap:wrap;gap:.4rem;}
+.plink{display:inline-flex;align-items:center;gap:3px;padding:3px 10px;border-radius:3px;font-family:'Space Mono',monospace;font-size:.63rem;letter-spacing:1px;border:1px solid;transition:background .15s;}
+.plink:hover{opacity:.85;}
+.pl-gh{border-color:rgba(77,166,224,.3);color:var(--c2);background:rgba(77,166,224,.05);}
+.pl-live{border-color:rgba(68,128,207,.3);color:var(--c1);background:rgba(68,128,207,.05);}
+.pl-fig{border-color:rgba(244,114,182,.3);color:var(--c5);background:rgba(244,114,182,.05);}
+.pl-ai{border-color:rgba(251,146,60,.3);color:var(--c3);background:rgba(251,146,60,.05);}
+
+/* SOFT SKILLS */
+.soft-grid{display:flex;flex-wrap:wrap;gap:.5rem;}
+.soft-tag{padding:5px 14px;border-radius:100px;font-family:'Space Mono',monospace;font-size:.68rem;border:1px solid var(--border);color:var(--muted);background:var(--card);transition:border-color .2s,color .2s;}
+.soft-tag:hover{border-color:var(--c1);color:var(--c1);}
+
+/* LANGUAGES */
+.lang-row{display:flex;gap:1rem;flex-wrap:wrap;}
+.lang-pill{padding:6px 18px;border-radius:5px;font-family:'Space Mono',monospace;font-size:.75rem;border:1px solid var(--border);color:var(--muted);background:var(--card);}
+.lang-pill strong{color:var(--text);}
+
+@media(max-width:700px){
+  .cv-hdr{grid-template-columns:1fr;}
+  .cv-contacts{text-align:left;}
+  .cv-links-row{justify-content:flex-start;}
+  .cv-name{font-size:2rem;}
+  .edu-card{flex-direction:column;gap:.75rem;}
+  .cv-page{padding:1.5rem 1rem 3rem;}
+}
+</style>
+</head>
+<body>
+<div class="grid-bg"></div>
+<div class="glow g1"></div><div class="glow g2"></div><div class="glow g3"></div>
+
+<div class="topbar">
+  <div class="topbar-left">
+    <button class="burger-btn" id="cpBtn" aria-label="Open control panel"><span></span><span></span><span></span></button>
+    <div class="topbar-logo">AK // CV</div>
+  </div>
+  <div class="topbar-links">
+    <a href="index.html" class="tb-btn tb-back">← Portfolio</a>
+    <a href="Ahmed_Kotb_CV_Print.pdf" download="Ahmed_Kotb_CV.pdf" onclick="return downloadCV(event)" class="tb-btn tb-dl">⬇ Download PDF</a>
+  </div>
+</div>
+
+<div class="cp-overlay" id="cpOverlay"></div>
+<aside class="cp-panel" id="cpPanel">
+  <div class="cp-header">
+    <div class="cp-header-inner">
+      <div class="cp-logo-badge">AK</div>
+      <div>
+        <div class="cp-title">Control Panel</div>
+        <div class="cp-subtitle">Ahmed Kotb · CV</div>
+      </div>
+    </div>
+    <button class="cp-close" id="cpClose">✕</button>
+  </div>
+  <div class="cp-body">
+    <div class="cp-section">
+      <div class="cp-label">Appearance</div>
+      <div class="cp-pill-row">
+        <button class="cp-pill" id="cpDark">🌙 Dark</button>
+        <button class="cp-pill" id="cpLight">☀️ Light</button>
+      </div>
+    </div>
+    <div class="cp-section">
+      <div class="cp-label">Tools</div>
+      <button class="cp-tool-btn" id="cpFullscreen">⛶ Fullscreen</button>
+      <button class="cp-tool-btn" onclick="window.print();return false;">🖨 Export / Print</button>
+    </div>
+    <div class="cp-section">
+      <div class="cp-label">Navigate</div>
+      <a href="index.html" class="cp-tool-btn" style="text-decoration:none;">Full Portfolio</a>
+      <a href="brief.html" class="cp-tool-btn" style="text-decoration:none;">Brief Version</a>
+      <a href="freelance.html" class="cp-tool-btn" style="text-decoration:none;">Freelance Services</a>
+    </div>
+    <div class="cp-section">
+      <div class="cp-label">Sections</div>
+      <a href="#summary" class="cp-sec-link" data-sec="summary"><span class="num">01</span>Summary</a>
+      <a href="#education" class="cp-sec-link" data-sec="education"><span class="num">02</span>Education</a>
+      <a href="#certification" class="cp-sec-link" data-sec="certification"><span class="num">03</span>Certifications</a>
+      <a href="#skills" class="cp-sec-link" data-sec="skills"><span class="num">04</span>Skills</a>
+      <a href="#projects" class="cp-sec-link" data-sec="projects"><span class="num">05</span>Projects</a>
+      <a href="#soft-skills" class="cp-sec-link" data-sec="soft-skills"><span class="num">06</span>Soft Skills</a>
+      <a href="#languages" class="cp-sec-link" data-sec="languages"><span class="num">07</span>Languages</a>
+    </div>
+    <div class="cp-section">
+      <div class="cp-label">Elsewhere</div>
+      <div class="cp-socials">
+        <a href="https://github.com/AhmedKotb349" target="_blank">GitHub</a>
+        <a href="https://www.linkedin.com/in/ahmed-kotb-ak349/" target="_blank">LinkedIn</a>
+      </div>
+    </div>
+  </div>
+</aside>
+
+<div class="cv-page">
+
+  <!-- HEADER -->
+  <div class="cv-hdr">
+    <div>
+      <div class="cv-name">Ahmed Kotb</div>
+      <div class="cv-name-ar">أحمد عبدالمنعم قطب</div>
+      <div class="cv-role-badge">Software Engineering Student <br> Full Stack Developer</div>
+    </div>
+    <div class="cv-contacts">
+      <div class="cv-contact-line">+20 120 272 2191 · Alexandria, Egypt 🇪🇬</div>
+      <div class="cv-contact-line">GPA: 3.85/4.0 · ID: 232000349</div>
+      <div class="cv-links-row">
+        <a href="mailto:akotb4749@gmail.com" class="cv-link-btn lbtn-email">✉ Email</a>
+        <a href="https://www.facebook.com/share/1AjETERK6d/" class="cv-link-btn lbtn-fb" target="_blank">📘 Facebook</a>
+        <a href="https://www.linkedin.com/in/ahmed-kotb-ak349/" class="cv-link-btn lbtn-li" target="_blank">💼 LinkedIn</a>
+        <a href="https://github.com/AhmedKotb349" class="cv-link-btn lbtn-gh" target="_blank">🐙 GitHub</a>
+        <a href="https://AhmedKotb349.github.io" class="cv-link-btn lbtn-pt" target="_blank">🌐 Portfolio</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- SUMMARY -->
+  <div class="cv-section" id="summary">
+    <div class="cv-sec-title"><span class="sec-icon">👤</span><span class="sec-label">Professional Summary</span></div>
+    <div class="cv-summary">
+      Computer Science student specializing in Software Engineering at AASTMT, Alexandria (ID: 232000349) — seeking an internship to apply skills in real-world projects.
+      Proficient across the full stack: C/Assembly at systems level; Java OOP with design patterns (Singleton, Proxy, Observer, Strategy); full-stack web with React, Node.js, PHP; JavaFX desktop apps with socket programming; Oracle/MySQL database design; Android development with Kotlin.
+      AWS AI Practitioner certified (Udacity, May 2026). Skilled in software testing, SDLC, Agile, AI prompt engineering, data structures, algorithms, and Linux/Kali/Wireshark cybersecurity.
+    </div>
+  </div>
+
+  <!-- EDUCATION -->
+  <div class="cv-section" id="education">
+    <div class="cv-sec-title"><span class="sec-icon">🎓</span><span class="sec-label">Education</span></div>
+    <div class="edu-card">
+      <div>
+        <div class="edu-school">Arab Academy for Science, Technology &amp; Maritime Transport (AASTMT)</div>
+        <div class="edu-deg">B.Sc. Computer Science — Major: Software Engineering · Alexandria, Egypt</div>
+        <div class="edu-gpa">GPA: 3.85 / 4.0 · Student ID: 232000349</div>
+      </div>
+      <div class="edu-year">Feb 2024 – Present</div>
+    </div>
+  </div>
+
+  <!-- CERTIFICATION -->
+  <div class="cv-section" id="certification">
+    <div class="cv-sec-title"><span class="sec-icon">🏆</span><span class="sec-label">Certifications & Training</span></div>
+    <div class="cert-card">
+      <div class="cert-icon">☁️</div>
+      <div>
+        <div class="cert-name">AWS AI Practitioner</div>
+        <div class="cert-meta">Udacity · May 3, 2026</div>
+        <a href="https://www.udacity.com/certificate/e/2f9f278a-3b6a-11f1-b7b7-27ea7002c679" class="cert-verify" target="_blank">View Certificate →</a>
+      </div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-icon">🎓</div>
+      <div>
+        <div class="cert-name">AI & Prompt Engineering Scholarship</div>
+        <div class="cert-meta">ICTHub Egypt · May 5, 2026</div>
+        <a href="ICTHUB.pdf" class="cert-verify" target="_blank">View Certificate →</a>
+      </div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-icon">📚</div>
+      <div>
+        <div class="cert-name">Currently Training</div>
+        <div class="cert-meta">NTI Penetration Testing · NTI AI Ambassadors · ITI Angular</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SKILLS -->
+  <div class="cv-section" id="skills">
+    <div class="cv-sec-title"><span class="sec-icon">🛠️</span><span class="sec-label">Technical Skills</span></div>
+    <div class="skills-grid">
+      <div class="skill-group sg-c1"><div class="skill-group-name">Languages</div><div class="stags"><span class="stag">C</span><span class="stag">Java</span><span class="stag">JavaScript</span><span class="stag">Python</span><span class="stag">PHP</span><span class="stag">Kotlin</span><span class="stag">SQL</span><span class="stag">Assembly</span></div></div>
+      <div class="skill-group sg-c2"><div class="skill-group-name">Frontend & UI</div><div class="stags"><span class="stag">HTML5</span><span class="stag">CSS3</span><span class="stag">React.js</span><span class="stag">JavaFX</span><span class="stag">Tailwind CSS</span><span class="stag">Figma</span><span class="stag">Responsive</span></div></div>
+      <div class="skill-group sg-c3"><div class="skill-group-name">Backend & DB</div><div class="stags"><span class="stag">Node.js</span><span class="stag">PHP</span><span class="stag">MySQL</span><span class="stag">Oracle SQL</span><span class="stag">REST APIs</span><span class="stag">Socket Programming</span></div></div>
+      <div class="skill-group sg-c4"><div class="skill-group-name">Mobile</div><div class="stags"><span class="stag">Android (Kotlin)</span><span class="stag">Android Studio</span></div></div>
+      <div class="skill-group sg-c4"><div class="skill-group-name">Security & OS</div><div class="stags"><span class="stag">Linux</span><span class="stag">Kali Linux</span><span class="stag">Ubuntu</span><span class="stag">Wireshark</span><span class="stag">Cybersecurity</span></div></div>
+      <div class="skill-group sg-c3"><div class="skill-group-name">AI & Cloud</div><div class="stags"><span class="stag">AWS AI Practitioner</span><span class="stag">AWS PartyRock</span><span class="stag">AI Prompt Eng.</span><span class="stag">NumPy</span><span class="stag">Pandas</span><span class="stag">Matplotlib</span></div></div>
+      <div class="skill-group sg-c5"><div class="skill-group-name">Software Engineering</div><div class="stags"><span class="stag">OOP</span><span class="stag">Design Patterns</span><span class="stag">SDLC</span><span class="stag">Agile/Scrum</span><span class="stag">Software Testing</span><span class="stag">PMBOK</span><span class="stag">UML</span><span class="stag">ERD</span></div></div>
+      <div class="skill-group sg-c6"><div class="skill-group-name">Tools</div><div class="stags"><span class="stag">Git</span><span class="stag">GitHub</span><span class="stag">VS Code</span><span class="stag">IntelliJ</span><span class="stag">NetBeans</span><span class="stag">Android Studio</span><span class="stag">Cisco Packet Tracer</span><span class="stag">MS Project</span></div></div>
+    </div>
+  </div>
+
+  <!-- PROJECTS -->
+  <div class="cv-section" id="projects">
+    <div class="cv-sec-title"><span class="sec-icon">🚀</span><span class="sec-label">Projects</span></div>
+
+    <div class="proj-cat"><span style="font-size:1.1rem">🌐</span><div class="proj-cat-name" style="color:var(--c1)">Web Development</div><div class="proj-cat-line"></div></div>
+
+    <div class="proj-card pc-web">
+      <div class="proj-top"><div class="proj-name">🦷 DentalShark — Dental Marketplace</div><span class="proj-badge" style="background:rgba(68,128,207,.07);border:1px solid rgba(68,128,207,.2);color:var(--c1)">Web · React · Android · JavaFX</span></div>
+      <p class="proj-desc">Built four ways — React web app, plain HTML/CSS/JS site, Android app (Kotlin), and JavaFX desktop app — sharing one Node/Express + MongoDB backend on Vercel, implementing 10 classic GoF design patterns. Figma UI prototype with full navigation flows. AWS PartyRock AI dental equipment assistant.</p>
+      <div class="proj-tech-row"><span class="tech-pill">React.js</span><span class="tech-pill">Node/Express</span><span class="tech-pill">MongoDB</span><span class="tech-pill">HTML5</span><span class="tech-pill">CSS3</span><span class="tech-pill">Kotlin</span><span class="tech-pill">JavaFX</span><span class="tech-pill">Figma</span><span class="tech-pill">AWS PartyRock</span></div>
+      <div class="proj-links-row">
+        <a href="https://github.com/AhmedKotb349/DentalShark" class="plink pl-gh" target="_blank">GitHub</a>
+        <a href="https://dental-shark.vercel.app" class="plink pl-live" target="_blank">Backend</a>
+        <a href="https://dental-shark-react.vercel.app" class="plink pl-live" target="_blank">React Live</a>
+        <a href="https://dental-shark-html.vercel.app" class="plink pl-live" target="_blank">HTML Live</a>
+        <a href="https://www.figma.com/proto/3pyGbHuzNDrfEF2d9jpE6B/DENTALSHARK_PROTOTYPE?node-id=169-205" class="plink pl-fig" target="_blank">Figma</a>
+        <a href="https://partyrock.aws/u/AhmedKotb4749/5BmdZ-j92/DENTAL-SHARK-Equipment-Marketplace-Assistant" class="plink pl-ai" target="_blank">AI App</a>
+      </div>
+    </div>
+
+    <div class="proj-card pc-web">
+      <div class="proj-top"><div class="proj-name">☕ Perk Coffee — Bilingual Landing Page</div><span class="proj-badge" style="background:rgba(68,128,207,.07);border:1px solid rgba(68,128,207,.2);color:var(--c1)">Web</span></div>
+      <p class="proj-desc">Bootstrap 5 landing page for a coffee brand, built bilingual (Arabic/English) with RTL support and a dark-mode toggle.</p>
+      <div class="proj-tech-row"><span class="tech-pill">Bootstrap 5</span><span class="tech-pill">RTL</span><span class="tech-pill">Dark Mode</span></div>
+      <div class="proj-links-row"><a href="https://github.com/AhmedKotb349/perk-coffee" class="plink pl-gh" target="_blank">GitHub</a><a href="https://perk-coffee.vercel.app/" class="plink pl-live" target="_blank">Live Demo</a></div>
+    </div>
+
+    <div class="proj-card pc-web">
+      <div class="proj-top"><div class="proj-name">🏎️ DA Motors — Automotive Showroom</div><span class="proj-badge" style="background:rgba(251,146,60,.07);border:1px solid rgba(251,146,60,.2);color:var(--c3)">Web</span></div>
+      <p class="proj-desc">Responsive showroom for 8 luxury cars (BMW, Audi, Ferrari, Porsche, Mercedes-AMG, Camaro). Wishlist system, contact page, CSS animations, fully responsive layout.</p>
+      <div class="proj-tech-row"><span class="tech-pill">HTML5</span><span class="tech-pill">CSS3</span><span class="tech-pill">JavaScript</span><span class="tech-pill">Responsive Design</span></div>
+      <div class="proj-links-row"><a href="https://github.com/AhmedKotb349/da-motors" class="plink pl-gh" target="_blank">GitHub</a><a href="https://ahmedkotb349.github.io/da-motors" class="plink pl-live" target="_blank">Live Demo</a></div>
+    </div>
+
+    <div class="proj-cat"><span style="font-size:1.1rem">🛡️</span><div class="proj-cat-name" style="color:var(--c5)">Security</div><div class="proj-cat-line"></div></div>
+
+    <div class="proj-card pc-web">
+      <div class="proj-top"><div class="proj-name">🛡️ Horus Byte — Pentesting Project</div><span class="proj-badge" style="background:rgba(244,114,182,.07);border:1px solid rgba(244,114,182,.22);color:var(--c5)">Kali Linux</span></div>
+      <p class="proj-desc">Independent penetration-testing project: a deliberately vulnerable build alongside its remediated counterpart, with a formal findings report and presentation deck.</p>
+      <div class="proj-tech-row"><span class="tech-pill">Kali Linux</span><span class="tech-pill">Vulnerability Assessment</span><span class="tech-pill">Reporting</span></div>
+      <div class="proj-links-row"><a href="https://github.com/AhmedKotb349/horus-byte" class="plink pl-gh" target="_blank">GitHub</a></div>
+    </div>
+
+    <div class="proj-card pc-web">
+      <div class="proj-top"><div class="proj-name">🎯 HTB — Cap Write-up</div><span class="proj-badge" style="background:rgba(244,114,182,.07);border:1px solid rgba(244,114,182,.22);color:var(--c5)">HackTheBox</span></div>
+      <p class="proj-desc">Full write-up of rooting the HackTheBox "Cap" machine — enumeration, privilege escalation path, and exploitation steps documented start to finish.</p>
+      <div class="proj-tech-row"><span class="tech-pill">HackTheBox</span><span class="tech-pill">Enumeration</span><span class="tech-pill">Privilege Escalation</span></div>
+      <div class="proj-links-row"><a href="https://github.com/AhmedKotb349/htb-cap-writeup" class="plink pl-gh" target="_blank">GitHub</a></div>
+    </div>
+
+    <div class="proj-card pc-web">
+      <div class="proj-top"><div class="proj-name">🔬 Advanced Physics Game</div><span class="proj-badge" style="background:rgba(232,201,60,.07);border:1px solid rgba(232,201,60,.2);color:var(--c6)">Educational</span></div>
+      <p class="proj-desc">Thermodynamics simulator: Quantity of Heat, Temperature, Thermal Expansion, Heat Transfer, Zeroth Law. Real-time physics engine, accuracy scoring, PDF export.</p>
+      <div class="proj-tech-row"><span class="tech-pill">HTML5</span><span class="tech-pill">CSS3</span><span class="tech-pill">JavaScript</span><span class="tech-pill">jsPDF</span></div>
+      <div class="proj-links-row"><a href="https://github.com/AhmedKotb349/physics-game" class="plink pl-gh" target="_blank">GitHub</a><a href="https://ahmedkotb349.github.io/physics-game" class="plink pl-live" target="_blank">Live Demo</a></div>
+    </div>
+
+    <div class="proj-cat"><span style="font-size:1.1rem">🤖</span><div class="proj-cat-name" style="color:var(--c3)">AI & Python</div><div class="proj-cat-line"></div></div>
+
+    <div class="proj-card pc-ai">
+      <div class="proj-top"><div class="proj-name">♛ 4-Queens (DFS) &nbsp;|&nbsp; 🔵 K-Means Clustering</div><span class="proj-badge" style="background:rgba(236,111,168,.07);border:1px solid rgba(236,111,168,.2);color:var(--c4)">Python · AI/ML</span></div>
+      <p class="proj-desc"><strong>4-Queens:</strong> Recursive DFS — visualized with NumPy, Pandas, chessboard plots, heatmaps, scatter plots via Matplotlib.<br/><strong>K-Means:</strong> Implemented from scratch — visualized cluster formation and centroid movement across iterations.</p>
+      <div class="proj-tech-row"><span class="tech-pill">Python</span><span class="tech-pill">NumPy</span><span class="tech-pill">Pandas</span><span class="tech-pill">Matplotlib</span><span class="tech-pill">DFS</span><span class="tech-pill">K-Means</span><span class="tech-pill">Jupyter</span></div>
+      <div class="proj-links-row">
+        <a href="https://github.com/AhmedKotb349/4-queens-dfs" class="plink pl-gh" target="_blank">4-Queens GitHub</a>
+        <a href="https://github.com/AhmedKotb349/kmeans-clustering" class="plink pl-gh" target="_blank">K-Means GitHub</a>
+        <a href="https://partyrock.aws/u/AhmedKotb4749/5BmdZ-j92/DENTAL-SHARK-Equipment-Marketplace-Assistant" class="plink pl-ai" target="_blank">AWS AI App</a>
+      </div>
+    </div>
+
+    <div class="proj-cat"><span style="font-size:1.1rem">☕</span><div class="proj-cat-name" style="color:var(--c2)">Java & OOP</div><div class="proj-cat-line"></div></div>
+
+    <div class="proj-card pc-java">
+      <div class="proj-top"><div class="proj-name">💬 Kotb Chat — Multithreaded Chat App</div><span class="proj-badge" style="background:rgba(77,166,224,.07);border:1px solid rgba(77,166,224,.25);color:var(--c2)">Java · JavaFX</span></div>
+      <p class="proj-desc">Multi-client TCP socket server with multi-threading. JavaFX GUI with dark/light mode toggle. File storage service and user session management.</p>
+      <div class="proj-tech-row"><span class="tech-pill">Java</span><span class="tech-pill">JavaFX</span><span class="tech-pill">Socket Programming</span><span class="tech-pill">Maven</span><span class="tech-pill">FXML</span></div>
+      <div class="proj-links-row"><a href="https://github.com/AhmedKotb349/kotb-chat" class="plink pl-gh" target="_blank">GitHub</a></div>
+    </div>
+
+    <div class="proj-card pc-java">
+      <div class="proj-top"><div class="proj-name">📡 DigitalStream Ltd &nbsp;|&nbsp; 📚 Library System</div><span class="proj-badge" style="background:rgba(244,114,182,.07);border:1px solid rgba(244,114,182,.22);color:var(--c5)">Design Patterns</span></div>
+      <p class="proj-desc"><strong>DigitalStream:</strong> Audience segmentation admin — Singleton, Proxy, Observer patterns.<br/><strong>Library:</strong> Books, member management, borrowing records — Strategy Pattern fine calculation.</p>
+      <div class="proj-tech-row"><span class="tech-pill">Java</span><span class="tech-pill">Singleton</span><span class="tech-pill">Proxy</span><span class="tech-pill">Observer</span><span class="tech-pill">Strategy</span><span class="tech-pill">OOP</span></div>
+      <div class="proj-links-row"><a href="https://github.com/AhmedKotb349/digitalstream-ltd" class="plink pl-gh" target="_blank">DigitalStream</a><a href="https://github.com/AhmedKotb349/library-system" class="plink pl-gh" target="_blank">Library</a></div>
+    </div>
+
+    <div class="proj-cat"><span style="font-size:1.1rem">🔷</span><div class="proj-cat-name" style="color:var(--c5)">Software Engineering</div><div class="proj-cat-line"></div></div>
+
+    <div class="proj-card pc-swe">
+      <div class="proj-top"><div class="proj-name">📖 ParrotBooks — Requirements Engineering</div><span class="proj-badge" style="background:rgba(244,114,182,.07);border:1px solid rgba(244,114,182,.22);color:var(--c5)">SRS · React · JavaFX</span></div>
+      <p class="proj-desc">Course project (CSE3101): full SRS/requirements-engineering deliverable, paired with a React client and a JavaFX client.</p>
+      <div class="proj-tech-row"><span class="tech-pill">SRS</span><span class="tech-pill">React</span><span class="tech-pill">JavaFX</span></div>
+      <div class="proj-links-row"><a href="https://github.com/AhmedKotb349/ParrotBooks" class="plink pl-gh" target="_blank">GitHub</a><a href="https://parrot-books.vercel.app/" class="plink pl-live" target="_blank">Live Demo</a></div>
+    </div>
+
+    <div class="proj-card pc-swe">
+      <div class="proj-top"><div class="proj-name">🧪 Software Testing — AcademyBugs.com</div><span class="proj-badge" style="background:rgba(68,128,207,.06);border:1px solid rgba(68,128,207,.18);color:var(--c1)">QA Testing</span></div>
+      <p class="proj-desc">35 structured test cases across 4 modules (Product, Cart, Sign In, Account) + 25 detailed bug reports with severity classification and reproduction steps.</p>
+      <div class="proj-tech-row"><span class="tech-pill">Manual Testing</span><span class="tech-pill">Test Case Design</span><span class="tech-pill">Bug Reports</span><span class="tech-pill">Excel</span></div>
+      <div class="proj-links-row"><a href="https://github.com/AhmedKotb349/software-testing" class="plink pl-gh" target="_blank">GitHub</a></div>
+    </div>
+
+    <div class="proj-card pc-swe">
+      <div class="proj-top"><div class="proj-name">📋 Project Management — Full PMBOK Lifecycle</div><span class="proj-badge" style="background:rgba(77,166,224,.07);border:1px solid rgba(77,166,224,.2);color:var(--c2)">PMBOK</span></div>
+      <p class="proj-desc">Initiating (charter, risk, financial analysis) → Planning (WBS, stakeholders, MS Project schedule) → Executing (kickoff, milestones) → Controlling (change requests, memos).</p>
+      <div class="proj-tech-row"><span class="tech-pill">PMBOK</span><span class="tech-pill">MS Project</span><span class="tech-pill">Agile/Scrum</span><span class="tech-pill">Risk Management</span><span class="tech-pill">WBS</span></div>
+      <div class="proj-links-row"><a href="https://github.com/AhmedKotb349/project-management" class="plink pl-gh" target="_blank">GitHub</a></div>
+    </div>
+
+    <div class="proj-cat"><span style="font-size:1.1rem">⚙️</span><div class="proj-cat-name" style="color:var(--c6)">C · Database · Systems · Networks</div><div class="proj-cat-line"></div></div>
+
+    <div class="proj-card pc-sys">
+      <div class="proj-top"><div class="proj-name">🔷 Systems & Database Portfolio</div><span class="proj-badge" style="background:rgba(232,201,60,.07);border:1px solid rgba(232,201,60,.2);color:var(--c6)">C · SQL · Asm · Cisco · UML</span></div>
+      <p class="proj-desc"><strong>C:</strong> Multi-branch Sales Analytics (arrays & structs), bubble sort, peak month detection.<br/><strong>Oracle SQL:</strong> E-Commerce DB with ERD, recursive ManagedBy, virtual Reorder_Level.<br/><strong>Assembly (MARIE):</strong> 13 programs + 4-bit ALU on CircuitVerse.<br/><strong>Cisco:</strong> Enterprise network — routing, subnetting, IP configuration.<br/><strong>UML:</strong> Note App & Library System diagrams plus 10 GoF design-pattern diagrams (see UML Portfolio).</p>
+      <div class="proj-tech-row"><span class="tech-pill">C</span><span class="tech-pill">Oracle SQL</span><span class="tech-pill">Assembly (MARIE)</span><span class="tech-pill">Cisco Packet Tracer</span><span class="tech-pill">UML</span><span class="tech-pill">ERD</span><span class="tech-pill">CircuitVerse</span></div>
+      <div class="proj-links-row"><a href="https://github.com/AhmedKotb349" class="plink pl-gh" target="_blank">GitHub</a></div>
+    </div>
+
+    <div class="proj-cat"><span style="font-size:1.1rem">🍂</span><div class="proj-cat-name" style="color:var(--c5)">Independent Builds</div><div class="proj-cat-line"></div></div>
+
+    <div class="proj-card pc-sys">
+      <div class="proj-top"><div class="proj-name">📑 Diwan — Client-side Report Editor</div><span class="proj-badge" style="background:rgba(244,114,182,.07);border:1px solid rgba(244,114,182,.22);color:var(--c5)">JavaScript</span></div>
+      <p class="proj-desc">A client-side report editor working entirely in the browser — HTML input, Excel and PDF export, no backend required.</p>
+      <div class="proj-tech-row"><span class="tech-pill">JavaScript</span><span class="tech-pill">Excel Export</span><span class="tech-pill">PDF Export</span></div>
+      <div class="proj-links-row"><a href="https://github.com/AhmedKotb349/Diwan" class="plink pl-gh" target="_blank">GitHub</a><a href="https://diwan-eight.vercel.app/" class="plink pl-live" target="_blank">Live Demo</a></div>
+    </div>
+
+    <div class="proj-card pc-sys">
+      <div class="proj-top"><div class="proj-name">🍂 Orchard Rush</div><span class="proj-badge" style="background:rgba(244,114,182,.07);border:1px solid rgba(244,114,182,.22);color:var(--c5)">HTML5 · CSS3 · JS</span></div>
+      <p class="proj-desc">Bilingual (EN/AR) basket-catching arcade game with mood-reactive backgrounds — an independent side build outside coursework.</p>
+      <div class="proj-tech-row"><span class="tech-pill">HTML5</span><span class="tech-pill">CSS3</span><span class="tech-pill">JavaScript</span></div>
+      <div class="proj-links-row"><a href="https://github.com/AhmedKotb349/orchard-rush" class="plink pl-gh" target="_blank">GitHub</a><a href="https://orchard-rush-opal.vercel.app/" class="plink pl-live" target="_blank">Live Demo</a></div>
+    </div>
+  </div>
+
+  <!-- SOFT SKILLS -->
+  <div class="cv-section" id="soft-skills">
+    <div class="cv-sec-title"><span class="sec-icon">🤝</span><span class="sec-label">Soft Skills</span></div>
+    <div class="soft-grid">
+      <span class="soft-tag">Problem Solving</span><span class="soft-tag">Teamwork</span>
+      <span class="soft-tag">Communication</span><span class="soft-tag">Time Management</span>
+      <span class="soft-tag">Analytical Thinking</span><span class="soft-tag">Self-Learning</span>
+      <span class="soft-tag">Adaptability</span><span class="soft-tag">Critical Thinking</span>
+      <span class="soft-tag">Attention to Detail</span>
+    </div>
+  </div>
+
+  <!-- LANGUAGES -->
+  <div class="cv-section" id="languages">
+    <div class="cv-sec-title"><span class="sec-icon">🌍</span><span class="sec-label">Languages</span></div>
+    <div class="lang-row">
+      <div class="lang-pill"><strong>Arabic</strong> — Native</div>
+      <div class="lang-pill"><strong>English</strong> — B2 Upper-Intermediate</div>
+    </div>
+  </div>
+
+</div>
+<script>
+const cpBtn = document.getElementById('cpBtn');
+const cpPanel = document.getElementById('cpPanel');
+const cpOverlay = document.getElementById('cpOverlay');
+const cpClose = document.getElementById('cpClose');
+function openCP(){cpBtn.classList.add('open');cpPanel.classList.add('show');cpOverlay.classList.add('show');}
+function closeCP(){cpBtn.classList.remove('open');cpPanel.classList.remove('show');cpOverlay.classList.remove('show');}
+cpBtn.addEventListener('click',()=>cpPanel.classList.contains('show')?closeCP():openCP());
+cpOverlay.addEventListener('click',closeCP);
+cpClose.addEventListener('click',closeCP);
+cpPanel.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',closeCP));
+
+const cpDark = document.getElementById('cpDark');
+const cpLight = document.getElementById('cpLight');
+function applyTheme(t){
+  document.documentElement.setAttribute('data-theme',t);
+  localStorage.setItem('ak-theme',t);
+  cpDark.classList.toggle('active',t==='dark');
+  cpLight.classList.toggle('active',t==='light');
+}
+applyTheme(localStorage.getItem('ak-theme') || 'dark');
+cpDark.addEventListener('click',()=>applyTheme('dark'));
+cpLight.addEventListener('click',()=>applyTheme('light'));
+
+document.getElementById('cpFullscreen').addEventListener('click',()=>{
+  if(!document.fullscreenElement) document.documentElement.requestFullscreen().catch(()=>{});
+  else document.exitFullscreen();
+});
+
+const cpSecLinks = document.querySelectorAll('.cp-sec-link[data-sec]');
+const cpObs = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      cpSecLinks.forEach(a=>a.classList.remove('active'));
+      const m=document.querySelector(`.cp-sec-link[data-sec="${e.target.id}"]`);
+      if(m)m.classList.add('active');
+    }
+  });
+},{threshold:0.3});
+cpSecLinks.forEach(a=>{
+  const el = document.getElementById(a.dataset.sec);
+  if(el) cpObs.observe(el);
+});
+
+async function downloadCV(e){
+  e.preventDefault();
+  const el = e.currentTarget;
+  const url = el.getAttribute('href');
+  const filename = el.getAttribute('download') || 'Ahmed_Kotb_CV.pdf';
+  try{
+    const res = await fetch(url);
+    if(!res.ok) throw new Error('fetch failed');
+    const blob = await res.blob();
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = filename;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+  }catch(err){
+    window.open(url,'_blank');
+  }
+  return false;
+}
+</script>
+</body>
+</html>
