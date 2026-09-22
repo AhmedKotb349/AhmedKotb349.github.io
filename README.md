@@ -24,26 +24,4 @@ All four pages share one design system (dark/light theme, toggled via the Contro
 | `ICTHUB.pdf` | AI & Prompt Engineering Scholarship certificate — ICTHub Egypt |
 | `Learn the Latest Tech Skills; Advance Your Career - Udacity.pdf` | AWS AI Practitioner certificate — Udacity |
 
-The site links to these directly (e.g. `ahmedkotb349.github.io/Ahmed_Kotb_CV.pdf`) since GitHub Pages serves them with the correct content type for in-browser viewing — unlike `raw.githubusercontent.com`, which forces a download.
-
-## 🎨 Design System
-
-- **Fonts:** Syne (headings) · Space Mono (labels, code, monospace accents)
-- **Palette:** teal · sky blue · copper · rose · coral red · gold — deliberately avoids purple/indigo
-- **Dark/Light mode:** toggled via the Control Panel (burger icon, left of the logo in the nav bar), persisted in `localStorage`
-- **Control Panel:** also provides quick navigation, a reading-progress bar, Fullscreen, and Export/Print (uses the browser's native print-to-PDF, respecting whichever theme is active)
-
-## 🚀 Deployment
-
-- **GitHub Pages:** builds automatically from this repo's default branch
-- **Vercel:** mirrors the same repo for a secondary deployment
-
-No build step — everything is static HTML/CSS/JS, so pushing to `main` is enough to update the live site on both platforms.
-
-## ✏️ Updating
-
-To update content (projects, certifications, links): edit the relevant section directly in `index.html` (source of truth for most content), then mirror any CV-related or contact-related changes into `cv.html`, `brief.html`, and `freelance.html` to keep all four pages consistent.
-
----
-
 📬 **Contact:** [akotb4749@gmail.com](mailto:akotb4749@gmail.com) · [LinkedIn](https://www.linkedin.com/in/ahmed-kotb-ak349/) · [GitHub](https://github.com/AhmedKotb349)
